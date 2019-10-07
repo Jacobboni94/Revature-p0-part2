@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.jdbc.util.ConnectionFactory;
 import com.revature.pojo.Offer;
@@ -44,6 +46,54 @@ public class OfferDAO {
 
 		return offer;
 
+	}
+
+	public List<Offer> getOfferByUsername(String username) {
+		String sql = "select * from " + schema + ".offer_table where username = ?";
+		PreparedStatement stmt;
+		List<Offer> offers = new ArrayList<Offer>();
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, username);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				Offer offer = new Offer();
+				offer.setOffer_id(rs.getInt(1));
+				offer.setVin(rs.getString(2));
+				offer.setUsername(rs.getString(3));
+				offer.setAmount(rs.getDouble(4));
+				offer.setStatus(rs.getString(5));
+				offers.add(offer);
+			}
+		} catch (SQLException e) {
+			trace("sql exception in get offers by username");
+		}
+		return offers;
+	}
+	
+	public List<Offer> getOfferByVin(String vin){
+		String sql = "select * from " + schema + ".offer_table where vin = ?";
+		PreparedStatement stmt;
+		List<Offer> offers = new ArrayList<Offer>();
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, vin);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				Offer offer = new Offer();
+				offer.setOffer_id(rs.getInt(1));
+				offer.setVin(rs.getString(2));
+				offer.setUsername(rs.getString(3));
+				offer.setAmount(rs.getDouble(4));
+				offer.setStatus(rs.getString(5));
+				offers.add(offer);
+			}
+		} catch (SQLException e) {
+			trace("sql exception in get offers by vin");
+		}
+		return offers;
 	}
 
 	public void createOffer(Offer o) {

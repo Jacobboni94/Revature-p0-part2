@@ -40,9 +40,9 @@ public class CarSystem implements menuUtil {
 					} else if (empString.equals("2")) {
 						carUtil.removeCarFromLot();
 					} else if (empString.equals("3")) {
-						//acceptOffer(); TODO
+						offerUtil.acceptOffer();
 					} else if (empString.equals("4")) {
-						//rejectOffer(); TODO
+						offerUtil.rejectOffer();
 					} else if (empString.equals("5")) {
 						//viewAllPayments(); TODO
 					} else {

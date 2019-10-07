@@ -34,3 +34,18 @@
 2019-10-07 08:46:22 TRACE root:30 - customer log in successfull
 2019-10-07 08:48:00 TRACE root:30 - customer log in successfull
 2019-10-07 08:52:03 TRACE root:30 - customer log in successfull
+2019-10-07 10:54:56 TRACE root:30 - employee login successfull
+2019-10-07 10:55:08 TRACE root:30 - sql exception in get offers by username
+2019-10-07 10:56:26 TRACE root:30 - employee login successfull
+2019-10-07 10:58:27 TRACE root:30 - employee login successfull
+2019-10-07 10:59:10 TRACE root:30 - customer log in successfull
+2019-10-07 11:00:10 TRACE root:30 - employee login successfull
+2019-10-07 11:02:11 TRACE root:30 - employee login successfull
+2019-10-07 11:02:56 TRACE root:30 - employee login successfull
+2019-10-07 11:05:01 TRACE root:30 - employee login successfull
+2019-10-07 11:07:31 TRACE root:30 - employee login successfull
+2019-10-07 11:08:11 TRACE root:30 - employee login successfull
+2019-10-07 11:35:28 TRACE root:30 - employee login successfull
+2019-10-07 11:39:49 TRACE root:30 - employee login successfull
+2019-10-07 11:42:36 TRACE root:30 - employee login successfull
+2019-10-07 11:48:59 TRACE root:30 - employee login successfull

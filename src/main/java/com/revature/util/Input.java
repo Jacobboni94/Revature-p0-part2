@@ -71,7 +71,7 @@ public class Input {
 		return ret;
 	}
 
-	public String getVin() {
+	public String getVin() { //TODO check if vin is in database
 		String ret = sc.nextLine();
 		while (ret.length() != 17) {
 			System.out.println("That's not a valid vin");
@@ -95,6 +95,21 @@ public class Input {
 		return ret_double;
 	}
 
+	public int getInt(int n1, int n2) {
+		String ret = sc.nextLine();
+		int ret_int;
+		while(true) {
+			try {
+				ret_int = Integer.parseInt(ret);
+				break;
+			}
+			catch(NumberFormatException e) {
+				System.out.println("Please enter a number between " + n1 + " and " + n2 + ".");
+			}
+		}
+		return ret_int;
+	}
+	
 	public void closeInput() {
 		sc.close();
 	}
