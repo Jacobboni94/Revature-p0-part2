@@ -26,3 +26,11 @@
 2019-10-06 22:50:49 TRACE root:30 - customer log in successfull
 2019-10-06 22:54:09 TRACE root:30 - customer log in successfull
 2019-10-06 22:59:55 TRACE root:30 - customer log in successfull
+2019-10-07 08:38:30 ERROR root:14 - Failed to create connection
+2019-10-07 08:38:51 ERROR root:14 - Failed to create connection
+2019-10-07 08:39:01 ERROR root:14 - Failed to create connection
+2019-10-07 08:39:11 ERROR root:14 - Failed to create connection
+2019-10-07 08:44:07 TRACE root:30 - customer log in successfull
+2019-10-07 08:46:22 TRACE root:30 - customer log in successfull
+2019-10-07 08:48:00 TRACE root:30 - customer log in successfull
+2019-10-07 08:52:03 TRACE root:30 - customer log in successfull

@@ -30,7 +30,7 @@ public class OfferDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				offer.setOffer_id(rs.getString(1));
+				offer.setOffer_id(rs.getInt(1));
 				offer.setVin(rs.getString(2));
 				offer.setUsername(rs.getString(3));
 				offer.setAmount(rs.getDouble(4));
@@ -48,15 +48,14 @@ public class OfferDAO {
 
 	public void createOffer(Offer o) {
 
-		String sql = "insert into " + schema + " offer_table (offer_id, vin, username, amount, status) values(?, ?, ?, ?, ?)";
+		String sql = "insert into " + schema + ".offer_table (vin, username, amount, status) values (?, ?, ?, ?)";
 
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, o.getOffer_id());
-			stmt.setString(2, o.getVin());
-			stmt.setString(3, o.getUsername());
-			stmt.setDouble(4, o.getAmount());
-			stmt.setString(5, o.getStatus());
+			stmt.setString(1, o.getVin());
+			stmt.setString(2, o.getUsername());
+			stmt.setDouble(3, o.getAmount());
+			stmt.setString(4, o.getStatus());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -70,7 +69,7 @@ public class OfferDAO {
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, newStatus);
-			stmt.setString(2, o.getOffer_id());
+			stmt.setInt(2, o.getOffer_id());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -24,7 +24,7 @@ public class CarSystem implements menuUtil {
 					} else if (custString.equals("2")) {
 						carUtil.viewCarsForSale();
 					} else if (custString.equals("3")) {
-						offerUtil.makeOffer();
+						offerUtil.makeOffer(authorization.getCurrentUser());
 					} else if (custString.equals("4")) {
 						//viewRemainingPayments(); TODO
 					} else {
