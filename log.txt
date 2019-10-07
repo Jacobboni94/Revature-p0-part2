@@ -1,0 +1,28 @@
+2019-10-06 21:29:54 TRACE root:30 - employee login successfull
+2019-10-06 21:31:35 TRACE root:30 - employee login successfull
+2019-10-06 21:32:55 TRACE root:30 - employee login successfull
+2019-10-06 21:34:12 TRACE root:30 - employee login successfull
+2019-10-06 21:45:09 TRACE root:30 - customer log in successfull
+2019-10-06 21:47:21 TRACE root:30 - employee login successfull
+2019-10-06 21:49:13 TRACE root:30 - employee login successfull
+2019-10-06 21:50:23 TRACE root:30 - customer log in successfull
+2019-10-06 21:56:00 TRACE root:30 - customer log in successfull
+2019-10-06 22:00:02 TRACE root:30 - customer log in successfull
+2019-10-06 22:06:34 TRACE root:30 - customer log in successfull
+2019-10-06 22:12:30 TRACE root:30 - customer log in successfull
+2019-10-06 22:16:20 TRACE root:30 - customer log in successfull
+2019-10-06 22:17:10 TRACE root:30 - customer log in successfull
+2019-10-06 22:19:06 TRACE root:30 - customer log in successfull
+2019-10-06 22:27:27 TRACE root:30 - customer log in successfull
+2019-10-06 22:27:30 INFO  root:26 - in the try bock for get = cars by username
+2019-10-06 22:31:24 TRACE root:30 - customer log in successfull
+2019-10-06 22:31:26 INFO  root:26 - in the try bock for get = cars by username
+2019-10-06 22:31:26 INFO  root:26 - rs: org.postgresql.jdbc.PgResultSet@7fac631b
+2019-10-06 22:38:32 TRACE root:30 - customer log in successfull
+2019-10-06 22:42:40 TRACE root:30 - customer log in successfull
+2019-10-06 22:44:26 TRACE root:30 - customer log in successfull
+2019-10-06 22:46:47 TRACE root:30 - customer log in successfull
+2019-10-06 22:49:17 TRACE root:30 - customer log in successfull
+2019-10-06 22:50:49 TRACE root:30 - customer log in successfull
+2019-10-06 22:54:09 TRACE root:30 - customer log in successfull
+2019-10-06 22:59:55 TRACE root:30 - customer log in successfull
