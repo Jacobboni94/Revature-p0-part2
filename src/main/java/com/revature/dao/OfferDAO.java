@@ -32,7 +32,7 @@ public class OfferDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				offer.setOffer_id(rs.getInt(1));
+				offer.setOffer_id(rs.getString(1));
 				offer.setVin(rs.getString(2));
 				offer.setUsername(rs.getString(3));
 				offer.setAmount(rs.getDouble(4));
@@ -59,7 +59,7 @@ public class OfferDAO {
 			
 			while(rs.next()) {
 				Offer offer = new Offer();
-				offer.setOffer_id(rs.getInt(1));
+				offer.setOffer_id(rs.getString(1));
 				offer.setVin(rs.getString(2));
 				offer.setUsername(rs.getString(3));
 				offer.setAmount(rs.getDouble(4));
@@ -72,29 +72,29 @@ public class OfferDAO {
 		return offers;
 	}
 	
-	public List<Offer> getOfferByVin(String vin){
-		String sql = "select * from " + schema + ".offer_table where vin = ?";
-		PreparedStatement stmt;
-		List<Offer> offers = new ArrayList<Offer>();
-		try {
-			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, vin);
-			ResultSet rs = stmt.executeQuery();
-			
-			while(rs.next()) {
-				Offer offer = new Offer();
-				offer.setOffer_id(rs.getInt(1));
-				offer.setVin(rs.getString(2));
-				offer.setUsername(rs.getString(3));
-				offer.setAmount(rs.getDouble(4));
-				offer.setStatus(rs.getString(5));
-				offers.add(offer);
-			}
-		} catch (SQLException e) {
-			trace("sql exception in get offers by vin");
-		}
-		return offers;
-	}
+//	public List<Offer> getOfferByVin(String vin){
+//		String sql = "select * from " + schema + ".offer_table where vin = ?";
+//		PreparedStatement stmt;
+//		List<Offer> offers = new ArrayList<Offer>();
+//		try {
+//			stmt = conn.prepareStatement(sql);
+//			stmt.setString(1, vin);
+//			ResultSet rs = stmt.executeQuery();
+//			
+//			while(rs.next()) {
+//				Offer offer = new Offer();
+//				offer.setOffer_id(rs.getString(1));
+//				offer.setVin(rs.getString(2));
+//				offer.setUsername(rs.getString(3));
+//				offer.setAmount(rs.getDouble(4));
+//				offer.setStatus(rs.getString(5));
+//				offers.add(offer);
+//			}
+//		} catch (SQLException e) {
+//			trace("sql exception in get offers by vin");
+//		}
+//		return offers;
+//	}
 
 	public void createOffer(Offer o) {
 
@@ -119,7 +119,7 @@ public class OfferDAO {
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, newStatus);
-			stmt.setInt(2, o.getOffer_id());
+			stmt.setString(2, o.getOffer_id());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

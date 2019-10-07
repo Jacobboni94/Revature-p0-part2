@@ -3,7 +3,7 @@ package com.revature.pojo;
 public class Offer {
 
 	
-	private int offer_id;
+	private String offer_id;
 	private double amount;
 	private String username;
 	private String vin;
@@ -13,7 +13,7 @@ public class Offer {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Offer(int offer_id, double amount, String username, String vin, String status) {
+	public Offer(String offer_id, double amount, String username, String vin, String status) {
 		super();
 		this.offer_id = offer_id;
 		this.amount = amount;
@@ -22,11 +22,11 @@ public class Offer {
 		this.status = status;
 	}
 
-	public int getOffer_id() {
+	public String getOffer_id() {
 		return offer_id;
 	}
 
-	public void setOffer_id(int offer_id) {
+	public void setOffer_id(String offer_id) {
 		this.offer_id = offer_id;
 	}
 

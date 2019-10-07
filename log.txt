@@ -49,3 +49,4 @@
 2019-10-07 11:39:49 TRACE root:30 - employee login successfull
 2019-10-07 11:42:36 TRACE root:30 - employee login successfull
 2019-10-07 11:48:59 TRACE root:30 - employee login successfull
+2019-10-07 14:31:18 TRACE root:30 - customer log in successfull

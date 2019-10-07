@@ -27,7 +27,10 @@ public class CarSystem implements menuUtil {
 						offerUtil.makeOffer(authorization.getCurrentUser());
 					} else if (custString.equals("4")) {
 						//viewRemainingPayments(); TODO
-					} else {
+					} else if(custString.equals("5")){
+						//makePayment(); TODO
+					}
+					else {
 						systemExit();
 					}
 				}
@@ -59,7 +62,6 @@ public class CarSystem implements menuUtil {
 	}
 
 	public void systemExit() {
-		// TODO
 		input.closeInput();
 		System.exit(0);
 	}
@@ -78,7 +80,8 @@ public class CarSystem implements menuUtil {
 		System.out.println("2: View cars for sale");
 		System.out.println("3: Make offer for a car");
 		System.out.println("4: View my remaining payments for a car");
-		System.out.println("5: Exit");
+		System.out.println("5: Make a payment on a car");
+		System.out.println("6: Exit");
 	}
 
 	@Override

@@ -23,7 +23,7 @@ public class OfferUtil {
 		newOffer.setAmount(input.getPrice());
 		newOffer.setUsername(username);
 		newOffer.setVin(vin);
-		newOffer.setOffer_id(1);
+		newOffer.setOffer_id("1");
 		newOffer.setStatus("pending");
 		offerDAO.createOffer(newOffer);
 	}

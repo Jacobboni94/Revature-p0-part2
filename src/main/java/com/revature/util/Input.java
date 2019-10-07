@@ -24,8 +24,9 @@ public class Input {
 
 	public String customerMenuInput() {
 		String ret = sc.nextLine();
-		while (!(ret.equals("1") || ret.equals("2") || ret.equals("3") || ret.equals("4") || ret.equals("5"))) {
-			System.out.println("please enter 1 through 5");
+		while (!(ret.equals("1") || ret.equals("2") || ret.equals("3") ||
+				ret.equals("4") || ret.equals("5") || ret.equals("6"))) {
+			System.out.println("please enter 1 through 6");
 			ret = sc.nextLine();
 		}
 		return ret;
