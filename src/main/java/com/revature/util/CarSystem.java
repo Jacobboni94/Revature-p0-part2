@@ -6,6 +6,7 @@ public class CarSystem implements menuUtil {
 	private Authorization authorization = new Authorization();
 	private CarUtil carUtil = new CarUtil();
 	private OfferUtil offerUtil = new OfferUtil();
+	private PaymentUtil paymentUtil = new PaymentUtil();
 
 	public CarSystem() {
 		super();
@@ -26,9 +27,9 @@ public class CarSystem implements menuUtil {
 					} else if (custString.equals("3")) {
 						offerUtil.makeOffer(authorization.getCurrentUser());
 					} else if (custString.equals("4")) {
-						//viewRemainingPayments(); TODO
+						paymentUtil.viewRemainingPayments(authorization.getCurrentUser());
 					} else if(custString.equals("5")){
-						//makePayment(); TODO
+						paymentUtil.makePayment(authorization.getCurrentUser());
 					}
 					else {
 						systemExit();
@@ -47,7 +48,7 @@ public class CarSystem implements menuUtil {
 					} else if (empString.equals("4")) {
 						offerUtil.rejectOffer();
 					} else if (empString.equals("5")) {
-						//viewAllPayments(); TODO
+						paymentUtil.viewAllPayments();
 					} else {
 						systemExit();
 					}

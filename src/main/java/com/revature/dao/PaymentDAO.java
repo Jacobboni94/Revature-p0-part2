@@ -84,5 +84,47 @@ public class PaymentDAO {
 		}
 		return payments;
 	}
-
+	
+	public List<Payment> getPaymentsByUsername(String username){
+		String sql = "select * from " + schema + ".payment_table where username = ?";
+		List<Payment> payments = new ArrayList<Payment>();
+		PreparedStatement stmt;
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1,  username);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				Payment payment = new Payment();
+				payment.setPayment_id(rs.getString(1));
+				payment.setUsername(rs.getString(2));
+				payment.setVin(rs.getString(3));
+				payment.setAmount(rs.getDouble(4));
+			}
+		}
+		catch(SQLException e) {
+			trace("SQL exception in get payments by user name");
+		}
+		return payments;
+	}
+	
+	public List<Payment> getAllPayments() {
+		String sql = "select * from " + schema + ".payment_table";
+		List<Payment> payments = new ArrayList<Payment>();
+		PreparedStatement stmt;
+		try {
+			stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Payment payment = new Payment();
+				payment.setPayment_id(rs.getString(1));
+				payment.setUsername(rs.getString(2));
+				payment.setVin(rs.getString(3));
+				payment.setAmount(rs.getDouble(4));
+				payments.add(payment);
+			}
+		} catch (SQLException e) {
+			trace("sql exception in get all payments");
+		}
+		return payments;
+	}
 }

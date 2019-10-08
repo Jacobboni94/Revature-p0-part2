@@ -117,9 +117,14 @@ public class Input {
 		while (true) {
 			try {
 				ret_double = Double.parseDouble(ret);
-				if(ret_double > remaining) {
-					System.out.println("You only owe $" + remaining + " on this car. Please enter an amount less than or equal to $" + remaining);
+				double min = remaining / 60.0;
+				if (ret_double > remaining) {
+					System.out.println("You only owe $" + remaining
+							+ " on this car. Please enter an amount less than or equal to $" + remaining);
 					continue;
+				} else if (ret_double < min) {
+					System.out.println("Your minimum monthly payment is $" + min);
+					System.out.println("Please enter an amount more than $" + min);
 				}
 				else {
 					ret = sc.nextLine();

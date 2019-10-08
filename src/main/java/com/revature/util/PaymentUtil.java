@@ -11,14 +11,13 @@ public class PaymentUtil {
 
 	private static PaymentDAO paymentDAO = new PaymentDAO();
 	private static CarDAO carDAO = new CarDAO();
-
-	Input input = new Input();
+	private Input input = new Input();
 
 	public void makePayment(String username) {
 		System.out.println("which car would you like to pay for?");
 		String vin = input.getVin();
 		List<Payment> payments = paymentDAO.getPaymentsByVin(vin);
-		double sum = 0;
+		double sum = 0.0;
 		Car car = carDAO.getCarByVin(vin);
 		for (int i = 0; i < payments.size(); i++) {
 			sum += payments.get(i).getAmount();
@@ -31,10 +30,23 @@ public class PaymentUtil {
 		paymentDAO.createPayment(newPayment);
 	}
 
-	public double remainingPayments(Car c, List<Payment> payments) {
-		double ret = 0.0;
-
-		return ret;
+	public void viewRemainingPayments(String username) {
+		System.out.println("For which car do you want ot view the remaining payments?");
+		String vin = input.getVin();
+		List<Payment> payments = paymentDAO.getPaymentsByVin(vin);
+		double sum = 0.0;
+		for (int i = 0; i < payments.size(); i++) {
+			sum += payments.get(i).getAmount();
+		}
+		double total = carDAO.getCarByVin(vin).getMarketPrice();
+		System.out.println("You owe $" + (total - sum) + " on this car.");
+		System.out.println("You're monthly payment is $" + (total - sum) / 60);
 	}
 
+	public void viewAllPayments() {
+		List<Payment> payments = paymentDAO.getAllPayments();
+		for (int i = 0; i < payments.size(); i++) {
+			System.out.println(payments.get(i).toString());
+		}
+	}
 }
