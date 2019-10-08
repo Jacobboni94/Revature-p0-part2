@@ -24,8 +24,8 @@ public class Input {
 
 	public String customerMenuInput() {
 		String ret = sc.nextLine();
-		while (!(ret.equals("1") || ret.equals("2") || ret.equals("3") ||
-				ret.equals("4") || ret.equals("5") || ret.equals("6"))) {
+		while (!(ret.equals("1") || ret.equals("2") || ret.equals("3") || ret.equals("4") || ret.equals("5")
+				|| ret.equals("6"))) {
 			System.out.println("please enter 1 through 6");
 			ret = sc.nextLine();
 		}
@@ -72,7 +72,7 @@ public class Input {
 		return ret;
 	}
 
-	public String getVin() { //TODO check if vin is in database
+	public String getVin() { // TODO check if vin is in database
 		String ret = sc.nextLine();
 		while (ret.length() != 17) {
 			System.out.println("That's not a valid vin");
@@ -99,18 +99,40 @@ public class Input {
 	public int getInt(int n1, int n2) {
 		String ret = sc.nextLine();
 		int ret_int;
-		while(true) {
+		while (true) {
 			try {
 				ret_int = Integer.parseInt(ret);
 				break;
-			}
-			catch(NumberFormatException e) {
+			} catch (NumberFormatException e) {
 				System.out.println("Please enter a number between " + n1 + " and " + n2 + ".");
+				ret = sc.nextLine();
 			}
 		}
 		return ret_int;
 	}
-	
+
+	public double getPayment(double remaining) {
+		String ret = sc.nextLine();
+		double ret_double;
+		while (true) {
+			try {
+				ret_double = Double.parseDouble(ret);
+				if(ret_double > remaining) {
+					System.out.println("You only owe $" + remaining + " on this car. Please enter an amount less than or equal to $" + remaining);
+					continue;
+				}
+				else {
+					ret = sc.nextLine();
+				}
+				break;
+			} catch (NumberFormatException e) {
+				System.out.println("Please enter a number");
+				ret = sc.nextLine();
+			}
+		}
+		return ret_double;
+	}
+
 	public void closeInput() {
 		sc.close();
 	}

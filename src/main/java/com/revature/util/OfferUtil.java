@@ -59,5 +59,9 @@ public class OfferUtil {
 				}
 			}
 		}
+		String vin = acceptedOffer.getVin();
+		Car boughtCar = carDAO.getCarByVin(vin);
+		carDAO.updateOwner(boughtCar, username);
+		carDAO.updatePrice(boughtCar, acceptedOffer.getAmount());
 	}
 }

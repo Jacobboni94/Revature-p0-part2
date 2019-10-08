@@ -101,4 +101,18 @@ public class CarDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void updatePrice(Car c, double newPrice) {
+
+		String sql = "update " + schema + ".car_table set price = ? where vin = ?";
+
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setDouble(1, newPrice);
+			stmt.setString(2, c.getVin());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
