@@ -1,7 +1,6 @@
 package com.revature.util;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
 
 import com.revature.dao.CarDAO;
 import com.revature.pojo.Car;
@@ -11,7 +10,7 @@ public class CarUtil {
 	private Input input = new Input();
 	private static CarDAO carDAO = new CarDAO();
 
-	public void addCarToLot(){
+	public boolean addCarToLot(){
 		Car newCar = new Car();
 		System.out.println("What is the car's vin?");
 		newCar.setVin(input.getVin());
@@ -19,46 +18,48 @@ public class CarUtil {
 		newCar.setMarketPrice(input.getPrice());
 		newCar.setOwner("dealership");
 		carDAO.createCar(newCar);
+		return true;
 	}
 	
-	public void removeCarFromLot() {
+	public boolean removeCarFromLot() {
 		System.out.println("What is the car's vin?");
 		String vin = input.getVin();
 		carDAO.deleteCar(vin);
+		return true;
 	}
 	
-	public void viewMyCars(String username) {
+	public boolean viewMyCars(String username) {
 		
-		ResultSet rs = carDAO.getCarsByUsername(username);
-		try {
-			while(rs.next()) {
-				Car car = new Car();
-				car.setVin(rs.getString(1));
-				car.setOwner(rs.getString(2));
-				car.setMarketPrice(rs.getDouble(3));
-				System.out.println(car);
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		List<Car> cars = carDAO.getCarsByUsername(username);
+		for (int i = 0; i < cars.size(); i++) {
+			System.out.println(cars.get(i).toString());
 		}
+		return true;
 	}
 	
-	public void viewCarsForSale() {
-		ResultSet rs = carDAO.getCarsByUsername("dealership");
-		try {
-			while(rs.next()) {
-				Car car = new Car();
-				car.setVin(rs.getString(1));
-				car.setOwner(rs.getString(2));
-				car.setMarketPrice(rs.getDouble(3));
-				System.out.println(car);
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public boolean viewCarsForSale() {
+		List<Car> cars = carDAO.getCarsByUsername("dealership");
+		for(int i = 0; i < cars.size(); i++) {
+			System.out.println(cars.get(i).toString());
 		}
+		return true;
 	}
+
+	public Input getInput() {
+		return input;
+	}
+
+	public void setInput(Input input) {
+		this.input = input;
+	}
+
+	public CarDAO getCarDAO() {
+		return carDAO;
+	}
+
+	public void setCarDAO(CarDAO carDAO) {
+		CarUtil.carDAO = carDAO;
+	}
+	
+	
 }

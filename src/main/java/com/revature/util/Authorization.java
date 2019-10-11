@@ -53,6 +53,22 @@ public class Authorization {
 		this.currentUser = currentUser;
 	}
 
+	public UserDAO getUserDAO() {
+		return userDAO;
+	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		Authorization.userDAO = userDAO;
+	}
+
+	public Input getInput() {
+		return input;
+	}
+
+	public void setInput(Input input) {
+		Authorization.input = input;
+	}
+
 	
 
 }

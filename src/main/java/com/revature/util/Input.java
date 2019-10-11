@@ -10,7 +10,7 @@ public class Input {
 	private static UserDAO userDAO = new UserDAO();
 
 	public Input() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public String startMenuInput() {

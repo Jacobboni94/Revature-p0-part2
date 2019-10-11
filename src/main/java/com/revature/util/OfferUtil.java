@@ -13,11 +13,10 @@ public class OfferUtil {
 	private static CarDAO carDAO = new CarDAO();
 	private static OfferDAO offerDAO = new OfferDAO();
 
-	public void makeOffer(String username) {
+	public boolean makeOffer(String username) {
 		Offer newOffer = new Offer();
 		System.out.println("which car is the offer for?");
 		String vin = input.getVin();
-		// TODO check if vin is in the database
 		Car car = carDAO.getCarByVin(vin);
 		System.out.println("This car costs " + car.getMarketPrice() + ". How much will you offer?");
 		newOffer.setAmount(input.getPrice());
@@ -26,9 +25,10 @@ public class OfferUtil {
 		newOffer.setOffer_id("1");
 		newOffer.setStatus("pending");
 		offerDAO.createOffer(newOffer);
+		return true;
 	}
 
-	public void rejectOffer() {
+	public boolean rejectOffer() {
 		System.out.println("Who's offers do you want to see?");
 		String username = input.getUsername();
 		List<Offer> offers = offerDAO.getOfferByUsername(username);
@@ -38,9 +38,10 @@ public class OfferUtil {
 		System.out.println("Which offer would you like to reject?");
 		int offerNum = input.getInt(0, offers.size());
 		offerDAO.updateOffer(offers.get(offerNum - 1), "rejected");
+		return true;
 	}
 
-	public void acceptOffer() {
+	public boolean acceptOffer() {
 		System.out.println("Who's offers do you want to see?");
 		String username = input.getUsername();
 		List<Offer> offers = offerDAO.getOfferByUsername(username);
@@ -50,18 +51,47 @@ public class OfferUtil {
 		System.out.println("Which offer would you like to accept?");
 		int offerNum = input.getInt(0, offers.size());
 		Offer acceptedOffer = offers.get(offerNum -1);
-		for (int i = 0; i < offers.size(); i++) {
-			if ( acceptedOffer.getVin().equals(offers.get(i).getVin()) ) {
-				if (i == offerNum - 1) {
-					offerDAO.updateOffer(offers.get(i), "accepted");
-				} else {
-					offerDAO.updateOffer(offers.get(i), "rejected");
-				}
-			}
-		}
 		String vin = acceptedOffer.getVin();
+		rejectOtherOffers(vin);
 		Car boughtCar = carDAO.getCarByVin(vin);
 		carDAO.updateOwner(boughtCar, username);
 		carDAO.updatePrice(boughtCar, acceptedOffer.getAmount());
+		return true;
 	}
+	
+	public boolean rejectOtherOffers(String vin) {
+		List<Offer> offers = offerDAO.getOfferByVin(vin);
+		for(int i = 0; i < offers.size(); i++) {
+			if(offers.get(i).getStatus().equals("pending")) {
+				offerDAO.updateOffer(offers.get(i), "rejected");
+			}
+		}
+		return true;
+	}
+
+	public Input getInput() {
+		return input;
+	}
+
+	public void setInput(Input input) {
+		this.input = input;
+	}
+
+	public CarDAO getCarDAO() {
+		return carDAO;
+	}
+
+	public void setCarDAO(CarDAO carDAO) {
+		OfferUtil.carDAO = carDAO;
+	}
+
+	public OfferDAO getOfferDAO() {
+		return offerDAO;
+	}
+
+	public void setOfferDAO(OfferDAO offerDAO) {
+		OfferUtil.offerDAO = offerDAO;
+	}
+	
+	
 }

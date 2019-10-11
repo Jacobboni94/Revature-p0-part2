@@ -70,7 +70,7 @@ public class CarSystem implements menuUtil {
 	@Override
 	public void startMenu() {
 		System.out.println("1: Login");
-		System.out.println("2: Regesiter");
+		System.out.println("2: Register");
 		System.out.println("3: Exit");
 
 	}
